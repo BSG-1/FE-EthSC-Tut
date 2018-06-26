@@ -116,8 +116,20 @@ class App extends Component {
 
   handleContractStateSubmit(event) {
     event.preventDefault();
+
     const { setState } = this.state.ContractInstance;
     const { contractState: newState } = this.state;
+
+    setState(
+      newState,
+      {
+        gas: 300000,
+        from: window.web3.eth.accounts[0,
+          value: window.web3.toWei(0.01, 'ether')
+      }, (err, result) => {
+        console.log('Smart contract state is changing.');
+      }
+    )
   }
 
   render() {
