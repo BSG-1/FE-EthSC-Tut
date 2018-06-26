@@ -103,6 +103,10 @@ class App extends Component {
     })
   }
 
+  queryContractState() {
+    const { getState } = this.state.ContractInstance;
+  }
+
   render() {
     return (
       <div className="App">
