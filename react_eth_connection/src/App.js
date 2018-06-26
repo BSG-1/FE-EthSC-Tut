@@ -62,7 +62,7 @@ class App extends Component {
       //creates a component state property that holds the address of the smart contract
       ContractInstance: MyContract.at('0x414c48f90c9745b1051b4264d5ae4942ae37b8f8')
     }
-    //binding
+    //binding the querySecret
     this.querySecret = this.querySecret.bind(this);
   }
 
