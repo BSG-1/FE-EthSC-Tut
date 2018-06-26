@@ -88,9 +88,10 @@ class App extends Component {
 
     this.state = {
       //creates a component state property that holds the address of the smart contract
-      ContractInstance: MyContract.at('0xd0036e5c3e54958d0dfa509303c0f5b9f2345771')
+      ContractInstance: MyContract.at('0xd0036e5c3e54958d0dfa509303c0f5b9f2345771'),
+      contractState: ''
     }
-    //binding the querySecret
+    //binding
     this.querySecret = this.querySecret.bind(this);
     this.queryContractState = this.queryContractState.bind(this);
   }
@@ -113,6 +114,12 @@ class App extends Component {
     })
   }
 
+  handleContractStateSubmit(event) {
+    event.preventDefault();
+    const { setState } = this.state.ContractInstance;
+    const { contractState: newState } = this.state;
+  }
+
   render() {
     return (
       <div className="App">
@@ -125,6 +132,15 @@ class App extends Component {
         <br /><br />
         <button onClick={this.queryContractState}>Query Smart Contract's State</button>
         <br /><br />
+        <form onSubmit={this.handleContractStateSubmit}>
+          <input
+            type="text"
+            name="state-change"
+            placeholder="Enter new state"
+            value={this.state.contractState}
+            onChange={event => this.setState({ contractState: event.target.value })} />
+          <button type="submit">Submit</button>
+        </form>
       </div>
     );
   }
