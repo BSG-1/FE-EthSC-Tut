@@ -105,6 +105,11 @@ class App extends Component {
 
   queryContractState() {
     const { getState } = this.state.ContractInstance;
+
+    getState((err, state) => {
+      if (err) console.error('An error occured::::', err);
+      console.log('This is our contract\'s state::::', state);
+    })
   }
 
   render() {
