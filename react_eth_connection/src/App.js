@@ -18,6 +18,20 @@ class App extends Component {
         "type": "function"
       },
       {
+        "constant": false,
+        "inputs": [
+          {
+            "name": "newState",
+            "type": "string"
+          }
+        ],
+        "name": "setState",
+        "outputs": [],
+        "payable": true,
+        "stateMutability": "payable",
+        "type": "function"
+      },
+      {
         "payable": true,
         "stateMutability": "payable",
         "type": "fallback"
@@ -32,6 +46,20 @@ class App extends Component {
         "constant": true,
         "inputs": [],
         "name": "getSecret",
+        "outputs": [
+          {
+            "name": "",
+            "type": "string"
+          }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "constant": true,
+        "inputs": [],
+        "name": "getState",
         "outputs": [
           {
             "name": "",
@@ -60,7 +88,7 @@ class App extends Component {
 
     this.state = {
       //creates a component state property that holds the address of the smart contract
-      ContractInstance: MyContract.at('0x414c48f90c9745b1051b4264d5ae4942ae37b8f8')
+      ContractInstance: MyContract.at('0xd0036e5c3e54958d0dfa509303c0f5b9f2345771')
     }
     //binding the querySecret
     this.querySecret = this.querySecret.bind(this);
@@ -84,6 +112,7 @@ class App extends Component {
         </header>
         <br /><br />
         <button onClick={this.querySecret}>Query smart contract's 'Secret'</button>
+        <button onClick={this.queryContractState}>Query Smart Contract's State</button>
         <br /><br />
       </div>
     );
