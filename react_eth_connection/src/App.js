@@ -10,7 +10,7 @@ class App extends Component {
     const MyContract = window.web3.eth.contract();
 
     this.state = {
-      //creates a contract instance of the smart contract at a particular ethereum address
+      //creates a component state property that holds the address of the smart contract
       ContractInstance: MyContract.at('')
     }
   }
