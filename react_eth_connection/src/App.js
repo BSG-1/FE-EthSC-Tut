@@ -94,6 +94,7 @@ class App extends Component {
     //binding
     this.querySecret = this.querySecret.bind(this);
     this.queryContractState = this.queryContractState.bind(this);
+    this.handleContractStateSubmit = this.handleContractStateSubmit.bind(this);
   }
 
   querySecret() {
@@ -124,10 +125,10 @@ class App extends Component {
       newState,
       {
         gas: 300000,
-        from: window.web3.eth.accounts[0,
-          value: window.web3.toWei(0.01, 'ether')
+        from: window.web3.eth.accounts[0],
+        value: window.web3.toWei(0.01, 'ether')
       }, (err, result) => {
-        console.log('Smart contract state is changing.');
+        console.log('Please wait, smart contract state is changing...');
       }
     )
   }
@@ -148,10 +149,10 @@ class App extends Component {
           <input
             type="text"
             name="state-change"
-            placeholder="Enter new state"
+            placeholder="Enter new state..."
             value={this.state.contractState}
             onChange={event => this.setState({ contractState: event.target.value })} />
-          <button type="submit">Submit</button>
+          <button type="submit"> Submit </button>
         </form>
       </div>
     );
