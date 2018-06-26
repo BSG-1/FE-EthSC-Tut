@@ -8,6 +8,11 @@ class App extends Component {
 
     //initializing instance of web3 injection
     const MyContract = window.web3.eth.contract();
+
+    this.state = {
+      //creates a contract instance of the smart contract at a particular ethereum address
+      ContractInstance: MyContract.at('')
+    }
   }
   render() {
     return (
