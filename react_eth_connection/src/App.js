@@ -62,17 +62,19 @@ class App extends Component {
       //creates a component state property that holds the address of the smart contract
       ContractInstance: MyContract.at('0x414c48f90c9745b1051b4264d5ae4942ae37b8f8')
     }
+
+    this.querySecret = this.querySecret.bind(this);
   }
   render() {
     return (
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
+          <h1 className="App-title">React & Ethereum Frontend Connect</h1>
         </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <br /><br />
+        <button onClick={this.querySecret}>Query smart contract's 'Secret'</button>
+        <br /><br />
       </div>
     );
   }
