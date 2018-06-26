@@ -116,6 +116,7 @@ class App extends Component {
         </header>
         <br /><br />
         <button onClick={this.querySecret}>Query smart contract's 'Secret'</button>
+        <br /><br />
         <button onClick={this.queryContractState}>Query Smart Contract's State</button>
         <br /><br />
       </div>
