@@ -6,7 +6,7 @@ class App extends Component {
   constructor(props) {
     super(props);
 
-    //initializing instance of web3 injection
+    //initializing instance of web3 injection --> this contains the Application Binary Interface (ABI)[an array of objects containing the bones of our smart contract]
     const MyContract = window.web3.eth.contract();
 
     this.state = {
