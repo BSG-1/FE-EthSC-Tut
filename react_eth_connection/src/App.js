@@ -128,7 +128,7 @@ class App extends Component {
 
     this.state = {
       //creates a component state property that holds the address of the smart contract
-      ContractInstance: MyContract.at('0x06a3a2869417f9cb9b557a81552d774026f78325'),
+      ContractInstance: MyContract.at('0xfa9ca5765a0e398d3ecf2b84b84293524dd8c244'),
       contractState: ''
     }
     //binding
@@ -194,6 +194,8 @@ class App extends Component {
             onChange={event => this.setState({ contractState: event.target.value })} />
           <button type="submit"> Submit </button>
         </form>
+        <br /><br />
+        <button onClick={this.queryConditionResult}>Query Smart Contract Conditional Result</button>
       </div>
     );
   }
