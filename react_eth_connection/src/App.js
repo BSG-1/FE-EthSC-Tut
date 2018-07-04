@@ -196,6 +196,8 @@ class App extends Component {
         </form>
         <br /><br />
         <button onClick={this.queryConditionResult}>Query Smart Contract Conditional Result</button>
+        <br /><br />
+        <button onClick={this.activateExperiment}>Start Experiment on Smart Contract</button>
       </div>
     );
   }
