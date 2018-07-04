@@ -135,6 +135,8 @@ class App extends Component {
     this.querySecret = this.querySecret.bind(this);
     this.queryContractState = this.queryContractState.bind(this);
     this.handleContractStateSubmit = this.handleContractStateSubmit.bind(this);
+    this.queryConditionResult = this.queryConditionResult.bind(this);
+    this.activateExperiment = this.activateExperiment.bind(this);
   }
 
   querySecret() {
