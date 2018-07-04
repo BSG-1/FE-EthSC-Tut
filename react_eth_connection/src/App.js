@@ -179,56 +179,59 @@ class App extends Component {
     })
   }
 
-  this.state.event.watch((err, event) => {
-  if (err) console.log("")
-})
+  handleContractStateSubmit(event) {
+    event.preventDefault();
 
-handleContractStateSubmit(event) {
-  event.preventDefault();
+    const { setState } = this.state.ContractInstance;
+    const { contractState: newState } = this.state;
 
-  const { setState } = this.state.ContractInstance;
-  const { contractState: newState } = this.state;
+    setState(
+      newState,
+      {
+        gas: 300000,
+        from: window.web3.eth.accounts[0],
+        value: window.web3.toWei(0.01, 'ether')
+      }, (err, result) => {
+        console.log('Please wait, smart contract state is changing...');
+      }
+    )
+  }
 
-  setState(
-    newState,
-    {
-      gas: 300000,
-      from: window.web3.eth.accounts[0],
-      value: window.web3.toWei(0.01, 'ether')
-    }, (err, result) => {
-      console.log('Please wait, smart contract state is changing...');
-    }
-  )
-}
+  render() {
 
-render() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <h1 className="App-title">React & Ethereum Frontend Connect</h1>
-      </header>
-      <br /><br />
-      <button onClick={this.querySecret}>Query smart contract's 'Secret'</button>
-      <br /><br />
-      <button onClick={this.queryContractState}>Query Smart Contract's State</button>
-      <br /><br />
-      <form onSubmit={this.handleContractStateSubmit}>
-        <input
-          type="text"
-          name="state-change"
-          placeholder="Enter new state..."
-          value={this.state.contractState}
-          onChange={event => this.setState({ contractState: event.target.value })} />
-        <button type="submit"> Submit </button>
-      </form>
-      <br /><br />
-      <button onClick={this.queryConditionResult}>Query Smart Contract Conditional Result</button>
-      <br /><br />
-      <button onClick={this.activateExperiment}>Start Experiment on Smart Contract</button>
-    </div>
-  );
-}
+    this.state.event.watch((err, event) => {
+      if (err) console.log("An error occurred::::", err);
+      console.log("This is the event::::", event);
+      console.log("This is the experiment result::::", event.args.result);
+    })
+
+    return (
+      <div className="App">
+        <header className="App-header">
+          <img src={logo} className="App-logo" alt="logo" />
+          <h1 className="App-title">React & Ethereum Frontend Connect</h1>
+        </header>
+        <br /><br />
+        <button onClick={this.querySecret}>Query smart contract's 'Secret'</button>
+        <br /><br />
+        <button onClick={this.queryContractState}>Query Smart Contract's State</button>
+        <br /><br />
+        <form onSubmit={this.handleContractStateSubmit}>
+          <input
+            type="text"
+            name="state-change"
+            placeholder="Enter new state..."
+            value={this.state.contractState}
+            onChange={event => this.setState({ contractState: event.target.value })} />
+          <button type="submit"> Submit </button>
+        </form>
+        <br /><br />
+        <button onClick={this.queryConditionResult}>Query Smart Contract Conditional Result</button>
+        <br /><br />
+        <button onClick={this.activateExperiment}>Start Experiment on Smart Contract</button>
+      </div>
+    );
+  }
 }
 
 export default App;
