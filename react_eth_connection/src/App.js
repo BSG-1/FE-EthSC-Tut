@@ -136,7 +136,7 @@ class App extends Component {
     this.queryContractState = this.queryContractState.bind(this);
     this.handleContractStateSubmit = this.handleContractStateSubmit.bind(this);
     this.queryConditionResult = this.queryConditionResult.bind(this);
-    //this.activateExperiment = this.activateExperiment.bind(this);
+    this.activateExperiment = this.activateExperiment.bind(this);
   }
 
   querySecret() {
@@ -168,9 +168,12 @@ class App extends Component {
   activateExperiment() {
     const { setExperimentInMotion } = this.state.ContractInstance;
 
-    setExperimentInMotion((err, res) => {
+    setExperimentInMotion({
       gas: 300000,
-        from: window.web3.eth.accounts[0],
+      from: window.web3.eth.accounts[0],
+      value: window.web3.toWei(0.01, 'ether')
+    }, (err, res) => {
+      console.log("Experiment to determine if true or false set into motion.");
     })
   }
 
