@@ -157,6 +157,10 @@ class App extends Component {
     })
   }
 
+  queryConditionResult() {
+    const { pseudoRandomResult } = this.state.ContractInstance;
+  }
+
   handleContractStateSubmit(event) {
     event.preventDefault();
 
