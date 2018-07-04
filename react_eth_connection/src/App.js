@@ -9,12 +9,38 @@ class App extends Component {
     //initializing instance of web3 injection --> this contains the Application Binary Interface (ABI)[an array of objects containing the bones of our smart contract]
     const MyContract = window.web3.eth.contract([
       {
+        "anonymous": false,
+        "inputs": [
+          {
+            "indexed": false,
+            "name": "result",
+            "type": "bool"
+          }
+        ],
+        "name": "ExperimentComplete",
+        "type": "event"
+      },
+      {
         "constant": false,
         "inputs": [],
         "name": "kill",
         "outputs": [],
         "payable": false,
         "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "constant": false,
+        "inputs": [],
+        "name": "setExperimentInMotion",
+        "outputs": [
+          {
+            "name": "",
+            "type": "bool"
+          }
+        ],
+        "payable": true,
+        "stateMutability": "payable",
         "type": "function"
       },
       {
@@ -73,6 +99,20 @@ class App extends Component {
       {
         "constant": true,
         "inputs": [],
+        "name": "pseudoRandomResult",
+        "outputs": [
+          {
+            "name": "",
+            "type": "bool"
+          }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "constant": true,
+        "inputs": [],
         "name": "you_awesome",
         "outputs": [
           {
@@ -88,7 +128,7 @@ class App extends Component {
 
     this.state = {
       //creates a component state property that holds the address of the smart contract
-      ContractInstance: MyContract.at('0xd0036e5c3e54958d0dfa509303c0f5b9f2345771'),
+      ContractInstance: MyContract.at('0x06a3a2869417f9cb9b557a81552d774026f78325'),
       contractState: ''
     }
     //binding
