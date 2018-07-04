@@ -159,6 +159,10 @@ class App extends Component {
 
   queryConditionResult() {
     const { pseudoRandomResult } = this.state.ContractInstance;
+
+    pseudoRandomResult((err, res) => {
+      console.log("This is the smart contract's conditional::::", res);
+    })
   }
 
   handleContractStateSubmit(event) {
